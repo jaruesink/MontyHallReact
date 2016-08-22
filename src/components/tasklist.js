@@ -7,9 +7,9 @@ class TaskList extends Component {
   }
   
   renderList() {
-    return this.props.tasks.map( (task) => {
+    return this.props.tasks.map( (task, i) => {
       return (
-        <li className="list-group-item" key={task.name}>{task.name}</li>
+        <li className="list-group-item" key={task.name+i}>{task.name}</li>
       );
     });
   }

@@ -1,12 +1,7 @@
-export default function() {
-  return [
-    {
-      name: 'do the dishes',
-      completed: false 
-    },
-    {
-      name: 'take out the trash',
-      completed: false
-    }
-  ]
+export default function(state = [], action) {
+  switch(action.type) {
+    case 'ADD_TASK':
+      return [action.payload].concat(state);
+  }
+  return state;
 }

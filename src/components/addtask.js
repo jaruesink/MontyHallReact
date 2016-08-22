@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
+import { addTask } from '../actions/index';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-export default class AddTask extends Component {
+class AddTask extends Component {
   constructor(props) {
     super(props);
   }
   
   addTask(e) {
     e.preventDefault();
-    console.log(this.refs.taskinput.value);
+    this.props.addTask(this.refs.taskinput.value);
   }
   
   render() {
@@ -23,3 +26,15 @@ export default class AddTask extends Component {
   )
   }
 }
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ addTask: addTask }, dispatch);
+}
+
+function mapStateToProps(state) {
+  return {
+    tasks: state.tasks
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddTask);
