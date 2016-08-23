@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import TaskActions from './taskactions';
 
 class TaskList extends Component {
   constructor(props) {
@@ -7,9 +9,11 @@ class TaskList extends Component {
   }
   
   renderList() {
-    return this.props.tasks.map( (task, i) => {
+    return this.props.tasks.map( (task, index) => {
       return (
-        <li className="list-group-item" key={task.name+i}>{task.name}</li>
+        <li className="list-group-item" key={task.name+index}>{task.name}
+          <TaskActions task={task} index={index} />
+        </li>
       );
     });
   }

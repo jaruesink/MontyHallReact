@@ -1,10 +1,11 @@
 export function addTask(name) {
-  console.log('task being added: ', name);
-  return {
-    type: 'ADD_TASK',
-    payload: {
-      name: name,
-      complete: false
-    }
-  };
+  return { type: 'ADD_TASK', payload: { name: name, completed: false } };
+}
+
+export function toggleTask(index) {
+  return { type: 'TOGGLE_TASK', payload: index };
+}
+
+export function deleteTask(index) {
+  return { type: 'DELETE_TASK', payload: index };
 }

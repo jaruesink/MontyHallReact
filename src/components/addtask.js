@@ -10,7 +10,9 @@ class AddTask extends Component {
   
   addTask(e) {
     e.preventDefault();
+    console.log('task being added: ', this.refs.taskinput.value);
     this.props.addTask(this.refs.taskinput.value);
+    this.refs.taskinput.value = '';
   }
   
   render() {
