@@ -21,8 +21,8 @@ class TaskActions extends Component {
   }
 
   render() {
-    let incompleteClass = classNames('btn', 'btn-success', { hidden: this.props.task.completed });
-    let completedClass = classNames('btn', 'btn-warning', { hidden: !this.props.task.completed });
+    const incompleteClass = classNames('btn', 'btn-success', { hidden: this.props.task.completed });
+    const completedClass = classNames('btn', 'btn-warning', { hidden: !this.props.task.completed });
   return(
     <div className="taskactions">
       <button onClick={this.toggleTask.bind(this)} className={incompleteClass}>Complete</button>

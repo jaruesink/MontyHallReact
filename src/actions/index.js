@@ -9,3 +9,7 @@ export function toggleTask(index) {
 export function deleteTask(index) {
   return { type: 'DELETE_TASK', payload: index };
 }
+
+export function filterTasks(filter) {
+  return { type: 'FILTER_TASKS', payload: filter }
+}
