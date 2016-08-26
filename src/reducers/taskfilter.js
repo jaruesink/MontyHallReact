@@ -16,7 +16,7 @@ export function getVisibleTasks(tasks, taskFilter) {
 export default function(state = 'VIEW_INCOMPLETE', action) {
   switch(action.type) {
     case 'FILTER_TASKS':
-      return action.payload;
+      return action.filter;
     default:
       return state
   }

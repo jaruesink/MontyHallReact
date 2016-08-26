@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import TaskActions from './taskactions';
+import { startAddTasks } from '../actions/'
 
 const getVisibleTasks = (tasks = [], taskFilter) => {
   switch(taskFilter) {
@@ -21,15 +22,17 @@ const getVisibleTasks = (tasks = [], taskFilter) => {
 class TaskList extends Component {
   constructor(props) {
     super(props);
+    this.props.startAddTasks();
   }
 
   renderList() {
     const { tasks, taskFilter } = this.props;
-    const visibleTasks = getVisibleTasks(tasks, taskFilter);
+    const visibleTasks = tasks.length ? getVisibleTasks(tasks, taskFilter) : null;
+    if (!(tasks.length)) { return <p>Add some tasks to get started.</p> }
     return visibleTasks.map( (task, index) => {
       return (
         <li className="list-group-item" key={task.name+index}>{task.name}
-          <TaskActions task={task} index={index} />
+          <TaskActions task={task} />
         </li>
       );
     });
@@ -44,6 +47,11 @@ class TaskList extends Component {
   }
 }
 
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ startAddTasks }, dispatch);
+}
+
 function mapStateToProps({tasks, taskFilter}) {
   return {
     tasks,
@@ -51,4 +59,4 @@ function mapStateToProps({tasks, taskFilter}) {
   }
 }
 
-export default connect(mapStateToProps)(TaskList);
+export default connect(mapStateToProps, mapDispatchToProps)(TaskList);

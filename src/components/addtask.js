@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { addTask } from '../actions/index';
+import { startAddTask } from '../actions/index';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -11,7 +11,7 @@ class AddTask extends Component {
   addTask(e) {
     e.preventDefault();
     console.log('task being added: ', this.refs.taskinput.value);
-    this.props.addTask(this.refs.taskinput.value);
+    this.props.startAddTask(this.refs.taskinput.value);
     this.refs.taskinput.value = '';
   }
   
@@ -30,7 +30,7 @@ class AddTask extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ addTask: addTask }, dispatch);
+  return bindActionCreators({ startAddTask: startAddTask }, dispatch);
 }
 
 function mapStateToProps(state) {

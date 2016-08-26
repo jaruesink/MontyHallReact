@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { toggleTask } from '../actions/index';
-import { deleteTask } from '../actions/index';
+import { startToggleTask } from '../actions/';
+import { startDeleteTask } from '../actions/';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import classNames from 'classnames';
@@ -12,12 +12,12 @@ class TaskActions extends Component {
 
   toggleTask() {
     console.log('toggling task', this.props.task.name);
-    this.props.toggleTask(this.props.index);
+    this.props.startToggleTask(this.props.task);
   }
   
   deleteTask() {
     console.log('deleting task', this.props.task.name)
-    this.props.deleteTask(this.props.index);
+    this.props.startDeleteTask(this.props.task);
   }
 
   render() {
@@ -34,7 +34,7 @@ class TaskActions extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ deleteTask, toggleTask }, dispatch);
+  return bindActionCreators({ startDeleteTask, startToggleTask }, dispatch);
 }
 
 function mapStateToProps(state) {
