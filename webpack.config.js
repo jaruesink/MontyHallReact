@@ -41,8 +41,7 @@ module.exports = {
     allChunks: true
   }),
   new CopyWebpackPlugin([
-    { from: 'index.html' },
-    { from: 'style/style.css', to: 'style/style.css' }
+    { from: 'index.html' }
   ]),
   new webpack.DefinePlugin({
     'process.env': {
